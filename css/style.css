@@ -252,13 +252,13 @@ p{
 
     gap:15px;
 
-    padding:10px 0;
+    padding:10px 20px;
 
 }
 
 .logo img{
 
-    width:120px;
+    width:90px;
 
 }
 
@@ -462,7 +462,7 @@ p{
 
     display:flex;
 
-    padding-top:220px;
+    padding-top:260px;
    
     justify-content:center;
 
