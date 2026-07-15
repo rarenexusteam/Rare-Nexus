@@ -230,3 +230,20 @@ function atualizarAno(){
 ============================ */
 
 console.log("Rare Nexus iniciada com sucesso.");
+
+/* =======================================================
+   MENU HAMBÚRGUER
+======================================================= */
+
+const menuToggle = document.getElementById("menuToggle");
+const mobileMenu = document.getElementById("mobileMenu");
+
+if (menuToggle && mobileMenu) {
+
+    menuToggle.addEventListener("click", () => {
+
+        mobileMenu.classList.toggle("active");
+
+    });
+
+}
