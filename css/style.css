@@ -238,6 +238,7 @@ p{
 
     border-bottom:1px solid var(--border);
 
+    padding: 10px 0;
 }
 
 .header .container{
@@ -250,7 +251,7 @@ p{
 
     justify-content:center;
 
-    gap:15px;
+    gap:8px;
 
     padding:10px 20px;
 
