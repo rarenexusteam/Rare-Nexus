@@ -1148,3 +1148,25 @@ footer{
     visibility:visible;
 
 }
+
+.mobile-menu-header{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:20px;
+    background:#1a1a1a;
+    border-bottom:1px solid #2b2b2b;
+}
+
+.mobile-menu-header img{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+}
+
+.mobile-menu-header h2{
+    color:#fff;
+    font-size:20px;
+    margin:0;
+    font-weight:700;
+}
