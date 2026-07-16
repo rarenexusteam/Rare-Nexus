@@ -1,17 +1,10 @@
-import { auth, storage } from "./firebase.js";
+import { auth } from "./firebase.js";
 
 import {
   onAuthStateChanged,
   updateProfile
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
-import {
-  ref,
-  uploadBytes,
-  getDownloadURL
-} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-storage.js";
-
-const foto = document.getElementById("fotoPerfil");
 const preview = document.getElementById("preview");
 const nome = document.getElementById("nome");
 const salvar = document.getElementById("salvar");
@@ -38,22 +31,9 @@ salvar.addEventListener("click", async () => {
 
         if (!utilizadorAtual) return;
 
-        let fotoURL = utilizadorAtual.photoURL;
-
-        if (foto.files.length > 0) {
-            const arquivo = foto.files[0];
-
-            const referencia = ref(storage, "perfis/" + utilizadorAtual.uid);
-
-            await uploadBytes(referencia, arquivo);
-
-            fotoURL = await getDownloadURL(referencia);
-        }
-
-        await updateProfile(utilizadorAtual, {
-            displayName: nome.value,
-            photoURL: fotoURL
-        });
+       await updateProfile(utilizadorAtual, {
+    displayName: nome.value
+});
 
         alert("Perfil atualizado com sucesso!");
         window.location = "perfil.html";
