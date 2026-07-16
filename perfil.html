@@ -71,7 +71,6 @@
 </div>
 
 <script type="module">
-
 import { auth } from "./js/firebase.js";
 
 import {
@@ -81,19 +80,23 @@ import {
 
 const email = document.getElementById("email");
 
-onAuthStateChanged(auth,(user)=>{
+onAuthStateChanged(auth, (user) => {
 
-    if(user){
-        email.textContent=user.email;
-    }else{
-        window.location="
+    if (user) {
+        email.textContent = user.email;
+    } else {
+        window.location = "login.html";
+    }
 
-        document.getElementById("logoutBtn").onclick = () => {
+});
+
+document.getElementById("logoutBtn").onclick = () => {
+
     signOut(auth).then(() => {
         window.location = "login.html";
     });
-};
 
+};
 </script>
 
 </body>
