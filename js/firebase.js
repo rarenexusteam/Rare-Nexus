@@ -20,6 +20,8 @@ const app = initializeApp(firebaseConfig);
 // Inicializar Authentication
 const auth = getAuth(app);
 
+import { getStorage } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-storage.js";
+
 // Inicializar Storage
 const storage = getStorage(app);
 
