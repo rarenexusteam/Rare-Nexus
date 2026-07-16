@@ -84,6 +84,9 @@ onAuthStateChanged(auth, (user) => {
 
     if (user) {
         email.textContent = user.email;
+
+document.getElementById("userName").textContent =
+    user.displayName || "Utilizador";
     } else {
         window.location = "login.html";
     }
