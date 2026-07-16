@@ -232,18 +232,29 @@ function atualizarAno(){
 console.log("Rare Nexus iniciada com sucesso.");
 
 /* =======================================================
-   MENU HAMBÚRGUER
+   MENU LATERAL
 ======================================================= */
 
 const menuToggle = document.getElementById("menuToggle");
 const mobileMenu = document.getElementById("mobileMenu");
+const overlay = document.getElementById("overlay");
 
-if (menuToggle && mobileMenu) {
-
-    menuToggle.addEventListener("click", () => {
-
-        mobileMenu.classList.toggle("active");
-
-    });
-
+function abrirMenu() {
+    mobileMenu.classList.add("active");
+    overlay.classList.add("active");
+    document.body.style.overflow = "hidden";
 }
+
+function fecharMenu() {
+    mobileMenu.classList.remove("active");
+    overlay.classList.remove("active");
+    document.body.style.overflow = "";
+}
+
+menuToggle.addEventListener("click", abrirMenu);
+
+overlay.addEventListener("click", fecharMenu);
+
+document.querySelectorAll(".mobile-menu a").forEach(link => {
+    link.addEventListener("click", fecharMenu);
+});
