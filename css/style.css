@@ -234,10 +234,12 @@ p{
 }
 
 .header .container{
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:space-between;
+    padding:10px 16px;
+    position:relative;
 }
 
 .logo{
@@ -257,18 +259,13 @@ p{
 ======================================================= */
 
 .menu-toggle{
-    position: absolute;
-    top: 18px;
-    left: 20px;
-
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 32px;
-    cursor: pointer;
-    padding: 8px;
-
-    z-index: 1001;
+    display:block;
+    font-size:30px;
+    background:none;
+    border:none;
+    color:#fff;
+    cursor:pointer;
+    z-index:1001;
 }
 
 .menu-toggle:hover{
@@ -279,7 +276,6 @@ p{
 
 .header-icons{
     display:flex;
-    align-items:center;
     gap:16px;
     margin-left:auto;
 }
