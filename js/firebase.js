@@ -1,6 +1,7 @@
 // Firebase SDK
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
+import { getStorage } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-storage.js";
 
 // Configuração do Firebase
 const firebaseConfig = {
@@ -13,8 +14,14 @@ const firebaseConfig = {
   measurementId: "G-0B3E6ZK0FB"
 };
 
+// Inicializar Firebase
 const app = initializeApp(firebaseConfig);
 
+// Inicializar Authentication
 const auth = getAuth(app);
 
-export { app, auth };
+// Inicializar Storage
+const storage = getStorage(app);
+
+// Exportar
+export { app, auth, storage };
