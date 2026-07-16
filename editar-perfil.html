@@ -1,1 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Editar Perfil - Rare Nexus</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<style>
+
+body{
+background:#0d0d0d;
+font-family:Arial,sans-serif;
+color:#fff;
+margin:0;
+}
+
+.editar{
+max-width:500px;
+margin:40px auto;
+background:#181818;
+padding:30px;
+border-radius:15px;
+}
+
+.editar h1{
+text-align:center;
+color:#d4af37;
+margin-bottom:30px;
+}
+
+.foto{
+text-align:center;
+margin-bottom:25px;
+}
+
+.foto img{
+width:140px;
+height:140px;
+border-radius:50%;
+border:3px solid #d4af37;
+object-fit:cover;
+}
+
+.foto input{
+margin-top:15px;
+width:100%;
+}
+
+input{
+width:100%;
+padding:15px;
+margin-top:15px;
+border:none;
+border-radius:10px;
+background:#222;
+color:#fff;
+box-sizing:border-box;
+}
+
+button{
+width:100%;
+margin-top:25px;
+padding:15px;
+background:#d4af37;
+border:none;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="editar">
+
+<h1>Editar Perfil</h1>
+
+<div class="foto">
+
+<img
+id="preview"
+src="assets/logo.png"
+alt="Foto">
+
+<input
+type="file"
+id="fotoPerfil"
+accept="image/*">
+
+</div>
+
+<input
+type="text"
+id="nome"
+placeholder="Nome">
+
+<button id="salvar">
+
+Salvar Alterações
+
+</button>
+
+</div>
+
+<script>
+
+const foto=document.getElementById("fotoPerfil");
+const preview=document.getElementById("preview");
+
+foto.addEventListener("change",(e)=>{
+
+const arquivo=e.target.files[0];
+
+if(!arquivo)return;
+
+preview.src=URL.createObjectURL(arquivo);
+
+});
+
+</script>
+
+</body>
+</html>
