@@ -235,11 +235,11 @@ p{
 
 .header .container{
     display:flex;
-    flex-direction:row;
     align-items:center;
     justify-content:space-between;
-    padding:10px 16px;
     position:relative;
+    height:70px;
+    padding:0 16px;
 }
 
 .logo{
@@ -259,13 +259,16 @@ p{
 ======================================================= */
 
 .menu-toggle{
-    display:block;
-    font-size:30px;
+    position:absolute;
+    left:16px;
+    top:50%;
+    transform:translateY(-50%);
     background:none;
     border:none;
     color:#fff;
+    font-size:30px;
     cursor:pointer;
-    z-index:1001;
+    z-index:1002;
 }
 
 .menu-toggle:hover{
