@@ -1,19 +1,49 @@
-<form id="loginForm">
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <input
-        type="email"
-        id="email"
-        placeholder="E-mail"
-        required>
+    <title>Entrar - Rare Nexus</title>
 
-    <input
-        type="password"
-        id="senha"
-        placeholder="Senha"
-        required>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
-    <button type="submit">
-        Entrar
-    </button>
+    <main class="login-container">
 
-</form>
+        <img src="assets/logo.png" alt="Rare Nexus" class="login-logo">
+
+        <h1>Entrar</h1>
+
+        <form id="loginForm">
+
+            <input
+                type="email"
+                id="email"
+                placeholder="E-mail"
+                required>
+
+            <input
+                type="password"
+                id="senha"
+                placeholder="Senha"
+                required>
+
+            <button type="submit">
+                Entrar
+            </button>
+
+        </form>
+
+        <p>
+            Ainda não possui conta?
+            <a href="cadastro.html">Criar conta</a>
+        </p>
+
+    </main>
+
+    <script type="module" src="js/login.js"></script>
+
+</body>
+</html>
