@@ -34,28 +34,32 @@ onAuthStateChanged(auth, (user) => {
 });
 
 salvar.addEventListener("click", async () => {
+    try {
 
-    if (!utilizadorAtual) return;
+        if (!utilizadorAtual) return;
 
-    let fotoURL = utilizadorAtual.photoURL;
+        let fotoURL = utilizadorAtual.photoURL;
 
-    if (foto.files.length > 0) {
+        if (foto.files.length > 0) {
+            const arquivo = foto.files[0];
 
-        const arquivo = foto.files[0];
+            const referencia = ref(storage, "perfis/" + utilizadorAtual.uid);
 
-        const referencia = ref(storage, "perfis/" + utilizadorAtual.uid);
+            await uploadBytes(referencia, arquivo);
 
-        await uploadBytes(referencia, arquivo);
+            fotoURL = await getDownloadURL(referencia);
+        }
 
-        fotoURL = await getDownloadURL(referencia);
+        await updateProfile(utilizadorAtual, {
+            displayName: nome.value,
+            photoURL: fotoURL
+        });
+
+        alert("Perfil atualizado com sucesso!");
+        window.location = "perfil.html";
+
+    } catch (erro) {
+        alert(erro.message);
+        console.error(erro);
     }
-
-    await updateProfile(utilizadorAtual, {
-        displayName: nome.value,
-        photoURL: fotoURL
-    });
-
-    alert("Perfil atualizado com sucesso!");
-
-    window.location = "perfil.html";
 });
