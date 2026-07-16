@@ -318,17 +318,13 @@ p{
 }
 
 .mobile-menu a{
-
+    display:flex;
+    align-items:center;
+    gap:16px;
     color:#fff;
-
     text-decoration:none;
-
     padding:18px 30px;
-
     font-size:20px;
-
-    transition:.3s;
-
 }
 
 .mobile-menu a:hover{
