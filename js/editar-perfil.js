@@ -1,44 +1,61 @@
-import { auth } from "./firebase.js";
+import { auth, db, storage } from "./firebase.js";
 
 import {
-    onAuthStateChanged,
-    updateProfile
-} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
+  onAuthStateChanged,
+  updateProfile
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-storage.js";
+
+const foto = document.getElementById("fotoPerfil");
+const preview = document.getElementById("preview");
 const nome = document.getElementById("nome");
 const salvar = document.getElementById("salvar");
 
-onAuthStateChanged(auth, (user) => {
+let utilizadorAtual = null;
 
+onAuthStateChanged(auth, (user) => {
     if (!user) {
-        window.location.href = "login.html";
+        window.location = "login.html";
         return;
     }
 
+    utilizadorAtual = user;
+
     nome.value = user.displayName || "";
 
+    if (user.photoURL) {
+        preview.src = user.photoURL;
+    }
 });
 
 salvar.addEventListener("click", async () => {
 
-    const user = auth.currentUser;
+    if (!utilizadorAtual) return;
 
-    if (!user) return;
+    let fotoURL = utilizadorAtual.photoURL;
 
-    try {
+    if (foto.files.length > 0) {
 
-        await updateProfile(user, {
-            displayName: nome.value
-        });
+        const arquivo = foto.files[0];
 
-        alert("Perfil atualizado com sucesso!");
+        const referencia = ref(storage, "perfis/" + utilizadorAtual.uid);
 
-        window.location.href = "perfil.html";
+        await uploadBytes(referencia, arquivo);
 
-    } catch (erro) {
-
-        alert("Erro: " + erro.message);
-
+        fotoURL = await getDownloadURL(referencia);
     }
 
+    await updateProfile(utilizadorAtual, {
+        displayName: nome.value,
+        photoURL: fotoURL
+    });
+
+    alert("Perfil atualizado com sucesso!");
+
+    window.location = "perfil.html";
 });
