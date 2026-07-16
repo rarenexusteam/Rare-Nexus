@@ -1,1 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil - Rare Nexus</title>
 
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        body{
+            background:#0d0d0d;
+            color:#fff;
+            font-family:Arial,Helvetica,sans-serif;
+            margin:0;
+        }
+
+        .perfil{
+            max-width:500px;
+            margin:50px auto;
+            background:#181818;
+            border-radius:15px;
+            padding:30px;
+            text-align:center;
+        }
+
+        .perfil img{
+            width:120px;
+            height:120px;
+            border-radius:50%;
+            border:3px solid #d4af37;
+            margin-bottom:20px;
+        }
+
+        h1{
+            color:#d4af37;
+        }
+
+        p{
+            font-size:18px;
+        }
+
+        button{
+            margin-top:20px;
+            padding:12px 25px;
+            border:none;
+            border-radius:8px;
+            background:#d4af37;
+            color:#000;
+            font-size:16px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="perfil">
+
+    <img src="assets/logo.png" alt="Rare Nexus">
+
+    <h1>Meu Perfil</h1>
+
+    <p><strong>E-mail:</strong></p>
+    <p id="email">Carregando...</p>
+
+    <button id="logoutBtn">Sair</button>
+
+</div>
+
+<script type="module">
+
+import { auth } from "./js/firebase.js";
+
+import {
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const email = document.getElementById("email");
+
+onAuthStateChanged(auth,(user)=>{
+
+    if(user){
+        email.textContent=user.email;
+    }else{
+        window.location="login.html";
+    }
+
+});
+
+document.getElementById("logoutBtn").onclick=()=>{
+
+    signOut(auth).then(()=>{
+        window.location="login.html";
+    });
+
+};
+
+</script>
+
+</body>
+</html>
